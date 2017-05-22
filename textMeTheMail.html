@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="gb2312"/>
+    <meta charset="UTF-8"/>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <!---ÉèÖÃÒ³ÃæÃèÊö---->
-    <meta name="Description" content="¸öÈË¼ò½éÊÇÃèÊöÈËÉúÒ»¸ö¶ÌÔİµÄÂÃ³Ì"/>
-    <!----¶¨Òå¹Ø¼ü´Ê£¬Ìá¸ß±ğÈËËÑË÷µ½µÄÃüÖĞÂÊ---->
-    <meta name="Keywords" content="¸öÈË¼ò½é£¬ÈËÉúµÄæäÕ¾"/>
-    <title>Èº·¢¶ÌĞÅ£¬ÓÊ¼ş</title>
+    <!---è®¾ç½®é¡µé¢æè¿°---->
+    <meta name="Description" content="ä¸ªäººç®€ä»‹æ˜¯æè¿°äººç”Ÿä¸€ä¸ªçŸ­æš‚çš„æ—…ç¨‹"/>
+    <!----å®šä¹‰å…³é”®è¯ï¼Œæé«˜åˆ«äººæœç´¢åˆ°çš„å‘½ä¸­ç‡---->
+    <meta name="Keywords" content="ä¸ªäººç®€ä»‹ï¼Œäººç”Ÿçš„é©¿ç«™"/>
+    <title>ç¾¤å‘çŸ­ä¿¡ï¼Œé‚®ä»¶</title>
 
     <style>
 
@@ -35,29 +35,29 @@
 
 </head>
 <body>
-<a href="index.html" >·µ»Ø</a>
-<h2>Í·ÎÄ¼ş¼°´úÀí</h2>
+<a href="index.html" >è¿”å›</a>
+<h2>å¤´æ–‡ä»¶åŠä»£ç†</h2>
 <div class="divPclass width=200px">
 
     <p class="pClass">#import &ltMessageUI/MessageUI.h></p>
-    <p class="pClass">#import &ltMessageUI/MFMailComposeViewController.h>´úÀí</p>
-    <p class="pClass">´úÀí</p>
+    <p class="pClass">#import &ltMessageUI/MFMailComposeViewController.h>ä»£ç†</p>
+    <p class="pClass">ä»£ç†</p>
     <p class="pClass"> &ltMFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate></p>
 </div>
 
-<h2>´òµç»°</h2>
+<h2>æ‰“ç”µè¯</h2>
 <div class="divPclass">
     <p class="pClass">-(void)makeCall</p>
     <p class="pClass">{</p>
     <p class="pClass">UIWebView *phone = [[UIWebView alloc]initWithFrame:CGRectZero];</p>
     <p class="pClass">[self.view addSubview:phone];</p>
-    <p class="pClass"> NSString *urlStr = [NSString stringWithFormat:@"tel://%@",@"18796989587"];//self.myText.textÊÇÄãÒª¶ÁÈëµÄµç»°ºÅÂë£¬tel:²»¿ÉÊ¡ÂÔ£¬·ñÔò³ÌĞò»á³ö´í</p>
+    <p class="pClass"> NSString *urlStr = [NSString stringWithFormat:@"tel://%@",@"18796989587"];//self.myText.textæ˜¯ä½ è¦è¯»å…¥çš„ç”µè¯å·ç ï¼Œtel:ä¸å¯çœç•¥ï¼Œå¦åˆ™ç¨‹åºä¼šå‡ºé”™</p>
     <p class="pClass">NSURL *url = [NSURL URLWithString:urlStr];</p>
     <p class="pClass">NSURLRequest *request = [NSURLRequest requestWithURL:url];</p>
     <p class="pClass">[phone loadRequest:request];</p>
-    <p class="pClass">//µ×ÏÂÕâÒ»ÖÖ»áÖ±½Ó²¦´òºÅÂë</p>
+    <p class="pClass">//åº•ä¸‹è¿™ä¸€ç§ä¼šç›´æ¥æ‹¨æ‰“å·ç </p>
     <p class="pClass">//[[UIApplication sharedApplication] openURL:url];</p>
-    <p class="pClass"> /* ios10ÒÔºóµÄĞ´·¨</p>
+    <p class="pClass"> /* ios10ä»¥åçš„å†™æ³•</p>
     <p class="pClass"> [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{UIApplicationOpenURLOptionUniversalLinksOnly : @NO} completionHandler:^(BOOL success) {</p>
     <p class="pClass"> NSLog(@"%d",success);</p>
     <p class="pClass">}];</p>
@@ -66,50 +66,50 @@
 
 </div>
 
-<h2>·¢ÏûÏ¢</h2>
+<h2>å‘æ¶ˆæ¯</h2>
 <div class="divPclass">
     <p class="pClass">-(void)sendMessage</p>
     <p class="pClass">{</p>
     <p class="pClass">if( [MFMessageComposeViewController canSendText] ){</p>
-    <p class="pClass">// MFMessageComposeViewControllerÌá¹©ÁË²Ù×÷½çÃæ,ÕâÀïÎÒÃÇ´´½¨Ò»¸öÏàÓ¦µÄ¿ØÖÆÆ÷</p>
+    <p class="pClass">// MFMessageComposeViewControlleræä¾›äº†æ“ä½œç•Œé¢,è¿™é‡Œæˆ‘ä»¬åˆ›å»ºä¸€ä¸ªç›¸åº”çš„æ§åˆ¶å™¨</p>
     <p class="pClass">MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc]init];</p>
     <p class="pClass">controller.recipients = [NSArray arrayWithObject:@"18796989587"];</p>
-    <p class="pClass">controller.body = @"²âÊÔ·¢¶ÌĞÅ";</p>
+    <p class="pClass">controller.body = @"æµ‹è¯•å‘çŸ­ä¿¡";</p>
     <p class="pClass">controller.messageComposeDelegate = self;</p>
-    <p class="pClass">//ÏÔÊ¾·¢ËÍĞÅÏ¢½çÃæµÄ¿ØÖÆÆ÷</p>
+    <p class="pClass">//æ˜¾ç¤ºå‘é€ä¿¡æ¯ç•Œé¢çš„æ§åˆ¶å™¨</p>
     <p class="pClass">[self presentViewController:controller animated:YES completion:nil];</p>
     <p class="pClass">}else{</p>
-    <p class="pClass">NSLog(@"Éè±¸²»¾ß±¸¶ÌĞÅ¹¦ÄÜ");</p>
+    <p class="pClass">NSLog(@"è®¾å¤‡ä¸å…·å¤‡çŸ­ä¿¡åŠŸèƒ½");</p>
     <p class="pClass">}</p>
     <p class="pClass">[[self rac_signalForSelector:@selector(messageComposeViewController:didFinishWithResult:) fromProtocol:@protocol(MFMessageComposeViewControllerDelegate)] subscribeNext:^(RACTuple* x) {</p>
     <p class="pClass">UIViewController*vc =x.first;</p>
     <p class="pClass">MessageComposeResult result = x.second;</p>
     <p class="pClass">[vc dismissViewControllerAnimated:YES completion:nil];</p>
     <p class="pClass">if (result ==  MessageComposeResultSent) {</p>
-    <p class="pClass"> [self.view makeToast:@"·¢ËÍ³É¹¦"];</p>
+    <p class="pClass"> [self.view makeToast:@"å‘é€æˆåŠŸ"];</p>
     <p class="pClass"> }else{</p>
-    <p class="pClass">[self.view makeToast:@"·¢ËÍÊ§°Ü"];</p>
+    <p class="pClass">[self.view makeToast:@"å‘é€å¤±è´¥"];</p>
     <p class="pClass">}</p>
     <p class="pClass">}];</p>
-    <p class="pClass">//µÚ¶şÖÖ·½Ê½</p>
+    <p class="pClass">//ç¬¬äºŒç§æ–¹å¼</p>
     <p class="pClass">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"sms:18796989587"]];</p>
 
 </div>
-<h2>·¢ËÍÓÊ¼ş</h2>
+<h2>å‘é€é‚®ä»¶</h2>
 <div class="divPclass">
     <p class="pClass">-(void)sendEmail</p>
     <p class="pClass">{</p>
     <p class="pClass"> if ([MFMailComposeViewController canSendMail]) {</p>
     <p class="pClass"> MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];</p>
     <p class="pClass">controller.mailComposeDelegate = self;</p>
-    <p class="pClass">[controller setToRecipients:[NSArray arrayWithObjects:@"1769693301@qq.com", nil]];//self.myText.textÎªÓÊ¼şµØÖ·</p>
-    <p class="pClass"> //Òª·¢ËÍµÄÓÊ¼şÖ÷Ìâ</p>
-    <p class="pClass">[controller setSubject:@"ÓÊ¼ş²âÊÔ"];</p>
-    <p class="pClass">//Òª·¢ËÍÓÊ¼şµÄÄÚÈİ</p>
+    <p class="pClass">[controller setToRecipients:[NSArray arrayWithObjects:@"1769693301@qq.com", nil]];//self.myText.textä¸ºé‚®ä»¶åœ°å€</p>
+    <p class="pClass"> //è¦å‘é€çš„é‚®ä»¶ä¸»é¢˜</p>
+    <p class="pClass">[controller setSubject:@"é‚®ä»¶æµ‹è¯•"];</p>
+    <p class="pClass">//è¦å‘é€é‚®ä»¶çš„å†…å®¹</p>
     <p class="pClass">[controller setMessageBody:@"Hello " isHTML:NO];</p>
     <p class="pClass">[self presentViewController:controller animated:YES completion:nil];</p>
     <p class="pClass">}else{</p>
-    <p class="pClass"> NSLog(@"Éè±¸²»¾ß±¸·¢ËÍÓÊ¼ş¹¦ÄÜ");</p>
+    <p class="pClass"> NSLog(@"è®¾å¤‡ä¸å…·å¤‡å‘é€é‚®ä»¶åŠŸèƒ½");</p>
     <p class="pClass">}</p>
     <p class="pClass"> [[self rac_signalForSelector:@selector(mailComposeController:didFinishWithResult:error:) fromProtocol:@protocol(MFMailComposeViewControllerDelegate)] subscribeNext:^(RACTuple* x) {</p>
     <p class="pClass"> UIViewController*vc =x.first;</p>
