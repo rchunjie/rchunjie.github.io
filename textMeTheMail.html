@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <!---设置页面描述---->
+    <meta name="Description" content="个人简介是描述人生一个短暂的旅程"/>
+    <!----定义关键词，提高别人搜索到的命中率---->
+    <meta name="Keywords" content="个人简介，人生的驿站"/>
+    <title>群发短信，邮件</title>
+
+    <style>
+
+    .divPclass{
+        overflow-x: scroll;
+        border-radius: 10px;
+        background-color: #e1e1e1;
+        width: 100%;
+        padding: 20px;
+    }
+    .pClass{
+        word-break: keep-all;
+        white-space: nowrap;
+        margin: 0px;
+        text-indent:1em;
+    }
+    a{
+        text-align: center;
+        width: 100%;
+    }
+
+    </style>
+
+</head>
+<body>
+<a href="index.html" >返回</a>
+<h2>头文件及代理</h2>
+<div class="divPclass width=200px">
+
+    <p class="pClass">#import &ltMessageUI/MessageUI.h></p>
+    <p class="pClass">#import &ltMessageUI/MFMailComposeViewController.h>代理</p>
+    <p class="pClass">代理</p>
+    <p class="pClass"> &ltMFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate></p>
+</div>
+
+<h2>打电话</h2>
+<div class="divPclass">
+    <p class="pClass">-(void)makeCall</p>
+    <p class="pClass">{</p>
+    <p class="pClass">UIWebView *phone = [[UIWebView alloc]initWithFrame:CGRectZero];</p>
+    <p class="pClass">[self.view addSubview:phone];</p>
+    <p class="pClass"> NSString *urlStr = [NSString stringWithFormat:@"tel://%@",@"18796989587"];//self.myText.text是你要读入的电话号码，tel:不可省略，否则程序会出错</p>
+    <p class="pClass">NSURL *url = [NSURL URLWithString:urlStr];</p>
+    <p class="pClass">NSURLRequest *request = [NSURLRequest requestWithURL:url];</p>
+    <p class="pClass">[phone loadRequest:request];</p>
+    <p class="pClass">//底下这一种会直接拨打号码</p>
+    <p class="pClass">//[[UIApplication sharedApplication] openURL:url];</p>
+    <p class="pClass"> /* ios10以后的写法</p>
+    <p class="pClass"> [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{UIApplicationOpenURLOptionUniversalLinksOnly : @NO} completionHandler:^(BOOL success) {</p>
+    <p class="pClass"> NSLog(@"%d",success);</p>
+    <p class="pClass">}];</p>
+    <p class="pClass">*/</p>
+    <p class="pClass">}</p>
+
+</div>
+
+<h2>发消息</h2>
+<div class="divPclass">
+    <p class="pClass">-(void)sendMessage</p>
+    <p class="pClass">{</p>
+    <p class="pClass">if( [MFMessageComposeViewController canSendText] ){</p>
+    <p class="pClass">// MFMessageComposeViewController提供了操作界面,这里我们创建一个相应的控制器</p>
+    <p class="pClass">MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc]init];</p>
+    <p class="pClass">controller.recipients = [NSArray arrayWithObject:@"18796989587"];</p>
+    <p class="pClass">controller.body = @"测试发短信";</p>
+    <p class="pClass">controller.messageComposeDelegate = self;</p>
+    <p class="pClass">//显示发送信息界面的控制器</p>
+    <p class="pClass">[self presentViewController:controller animated:YES completion:nil];</p>
+    <p class="pClass">}else{</p>
+    <p class="pClass">NSLog(@"设备不具备短信功能");</p>
+    <p class="pClass">}</p>
+    <p class="pClass">[[self rac_signalForSelector:@selector(messageComposeViewController:didFinishWithResult:) fromProtocol:@protocol(MFMessageComposeViewControllerDelegate)] subscribeNext:^(RACTuple* x) {</p>
+    <p class="pClass">UIViewController*vc =x.first;</p>
+    <p class="pClass">MessageComposeResult result = x.second;</p>
+    <p class="pClass">[vc dismissViewControllerAnimated:YES completion:nil];</p>
+    <p class="pClass">if (result ==  MessageComposeResultSent) {</p>
+    <p class="pClass"> [self.view makeToast:@"发送成功"];</p>
+    <p class="pClass"> }else{</p>
+    <p class="pClass">[self.view makeToast:@"发送失败"];</p>
+    <p class="pClass">}</p>
+    <p class="pClass">}];</p>
+    <p class="pClass">//第二种方式</p>
+    <p class="pClass">//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"sms:18796989587"]];</p>
+
+</div>
+<h2>发送邮件</h2>
+<div class="divPclass">
+    <p class="pClass">-(void)sendEmail</p>
+    <p class="pClass">{</p>
+    <p class="pClass"> if ([MFMailComposeViewController canSendMail]) {</p>
+    <p class="pClass"> MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];</p>
+    <p class="pClass">controller.mailComposeDelegate = self;</p>
+    <p class="pClass">[controller setToRecipients:[NSArray arrayWithObjects:@"1769693301@qq.com", nil]];//self.myText.text为邮件地址</p>
+    <p class="pClass"> //要发送的邮件主题</p>
+    <p class="pClass">[controller setSubject:@"邮件测试"];</p>
+    <p class="pClass">//要发送邮件的内容</p>
+    <p class="pClass">[controller setMessageBody:@"Hello " isHTML:NO];</p>
+    <p class="pClass">[self presentViewController:controller animated:YES completion:nil];</p>
+    <p class="pClass">}else{</p>
+    <p class="pClass"> NSLog(@"设备不具备发送邮件功能");</p>
+    <p class="pClass">}</p>
+    <p class="pClass"> [[self rac_signalForSelector:@selector(mailComposeController:didFinishWithResult:error:) fromProtocol:@protocol(MFMailComposeViewControllerDelegate)] subscribeNext:^(RACTuple* x) {</p>
+    <p class="pClass"> UIViewController*vc =x.first;</p>
+    <p class="pClass"> [vc dismissViewControllerAnimated:YES completion:nil];</p>
+    <p class="pClass">}];</p>
+    <p class="pClass">}</p>
+
+</div>
+<div>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+
+</div>
+<div>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+
+</div>
+<div>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+    <p class="pClass"></p>
+
+</div>
+
+</body>
+</html>
