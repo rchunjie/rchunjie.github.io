@@ -1,63 +1,45 @@
-<!doctype html>
-<html lang="en">
-    <head>
-       <!--- <meta charset="UTF-8">定义字符集gb2312大小比utf-8更快，但是字符较少 ---->
-        <meta charset="UTF-8"/>
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <!---设置页面描述---->
-        <meta name="Description" content="个人简介是描述人生一个短暂的旅程"/>
-        <!----定义关键词，提高别人搜索到的命中率---->
-        <meta name="Keywords" content="个人简介，人生的驿站"/>
-        <title>个人简介</title>
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-        <style>
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-            a
-            {
-                background-color: skyblue;
-                -webkit-animation:faguang 1.5s linear 0s infinite alternate;
-                border-radius: 10px;
-                text-decoration: none;
-                display: block;
-                font-size: 30px;
-                line-height: 40px;
-                text-align: center;
-                width: 300px;
-            }
+    Fore more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+  -->
+  <base href="/">
 
-            .pClass{
-                height: 100px;
-                overflow-x: scroll;
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
 
-            }
-            a:hover
-            {
-                background-color:yellow;
-            }
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="flutter_wechat_demo">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-@-webkit-keyframes faguang {
-    from
-    {
-        box-shadow: 0px 0px 1px red;
-        /*<!--旋转角度从0度开始-->*/
-        /*transform:rotate(0deg);*/
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>flutter_wechat_demo</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('flutter-first-frame', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=73036738');
+      });
     }
-    to
-    {
-        box-shadow: 0px 0px 20px blue;
-        /*<!--旋转结束角度-->*/
-        /*transform:rotate(360deg);*/
-    }
-}
-        </style>
-
-    </head>
-
-<a href="textMeTheMail.html" title="群发短信，邮件" target="_parent" style="text-decoration: none">群发短信，邮件</a>
-
-
-
-    </body>
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
+</body>
 </html>
